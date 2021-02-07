@@ -18,14 +18,14 @@ public class JdbcUtils {
 
     private static Logger logger = Logger.getLogger(JdbcUtils.class);
 
-    private static final String url = "jdbc:postgresql://localhost/";
+    private static final String url = "jdbc:postgresql://";
     private static final String user = "testcicd";
 
-    static public Connection connect(String dbName) {
+    static public Connection connect(String dbName,String port) {
         // To singleton, use the static variable already created
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(url + dbName, user, "helloWorld");
+            conn = DriverManager.getConnection(url + port + "/" + dbName, user, "helloWorld");
             logger.info("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -34,6 +34,13 @@ public class JdbcUtils {
         return conn;
     }
 
+    /**
+     * this function allow us to insert fake data into our database
+     *
+     * @param conn the conn parameter of our database
+     * @param table the table in our database and also ther name of the
+     * @param data
+     */
     static public void insertData(Connection conn, Class<? extends Client> table, JSONObject data) {
         Statement stmt = null;
 

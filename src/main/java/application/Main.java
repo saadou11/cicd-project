@@ -19,18 +19,10 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        ArrayList<String> myList = new ArrayList<String>(){{
-            add("ngbyugn");
-            add("vlevoeizvcs");
-            add("vohzfnifvnzovuzofnzvfoz");
-        }};
 
-        String joinedFirstNames = myList.stream().collect(Collectors.joining(", "));
-        System.out.println(joinedFirstNames);
+        Connection cnx = JdbcUtils.connect("testdatabase",args[0]);
 
-        Connection cnx = JdbcUtils.connect("testdatabase");
-
-        for(int i = 0; i <= 100;  i++){
+        for(int i = 0; i <= 1000;  i++){
 
             JSONObject fakeData = FakerUtils.fakeJsonData(FakerUtils.getFaker());
             JdbcUtils.insertData(cnx, Client.class,fakeData);
