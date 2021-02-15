@@ -9,7 +9,7 @@ node {
           ansiblePlaybook (
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/psqlImage.yml'
+          playbook: 'myAnsibleRole\tasks\psqlImage.yml'
       )
   }
     stage('Ansible java Image'){
