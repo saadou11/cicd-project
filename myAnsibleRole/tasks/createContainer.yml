@@ -1,0 +1,16 @@
+- name: Docker build container
+  hosts: localhost
+  tasks:
+   - name: createContainer
+     docker_container:
+       name: my_bdd
+       image: psql_sad
+       state: started
+       ports:
+       - "5554:5432" 
+       tty: true
+       detach: true
+       volumes:
+         -  my-psql_volume:/var/lib/postgresql/dat
+       networks:
+         - name: my_network    
