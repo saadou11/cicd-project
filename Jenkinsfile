@@ -6,18 +6,46 @@ node {
   sh 'mvn clean package'
   }
   stage('Ansible psql Image'){
-    sh 'ansible-playbook myAnsibleRole/tasks/psqlImage.yml'
+          ansiblePlaybook (
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/psqlImage.yml'
+      )
   }
     stage('Ansible java Image'){
-    sh 'ansible-playbook myAnsibleRole/tasks/javaImage.yml'
+          ansiblePlaybook(
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/javaImage.yml'
+      )
   }
     stage('Ansible docker volume'){
-    sh 'ansible-playbook myAnsibleRole/tasks/createVolume.yml'
+          ansiblePlaybook(
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/createVolume.yml'
+      )
   }
     stage('Ansible docker network'){
+          ansiblePlaybook(
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/createNetwork.yml'
+      )
     sh 'ansible-playbook myAnsibleRole/tasks/createNetwork.yml'
   }
-    stage('Ansible psql and java Container'){
-    sh 'ansible-playbook myAnsibleRole/tasks/createContainer.yml && ansible-playbook myAnsibleRole/tasks/createJavaContainer.yml'
+    stage('Ansible psql Container'){
+          ansiblePlaybook(
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/createContainer.yml'
+      )
+  }
+      stage('Ansible psql Container'){
+          ansiblePlaybook(
+          colorized: true,
+          become: true,
+          playbook: 'myAnsibleRole/tasks/createJavaContainer.yml'
+      )
   }
 }
