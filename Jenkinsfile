@@ -9,43 +9,42 @@ node {
           ansiblePlaybook (
           colorized: true,
           become: true,
-          playbook: 'psqlImage.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/psqlImage.yml'
       )
   }
     stage('Ansible java Image'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'javaImage.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/javaImage.yml'
       )
   }
     stage('Ansible docker volume'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'createVolume.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createVolume.yml'
       )
   }
     stage('Ansible docker network'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'createNetwork.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createNetwork.yml'
       )
-    sh 'ansible-playbook myAnsibleRole/tasks/createNetwork.yml'
   }
     stage('Ansible psql Container'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'createContainer.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createContainer.yml'
       )
   }
       stage('Ansible java Container'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'createJavaContainer.yml'
+          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createJavaContainer.yml'
       )
   }
 }
