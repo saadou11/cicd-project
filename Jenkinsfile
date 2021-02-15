@@ -1,5 +1,6 @@
 node {
-  stage('SCM checkout'){
+  def registryProjet='/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/'
+  stage('clone project'){
     git 'https://github.com/saadou11/cicd-project'
   }
   stage('Clean-Compile'){
@@ -8,37 +9,37 @@ node {
   stage('Ansible psql Image'){
           ansiblePlaybook (
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/psqlImage.yml'
+            playbook: '${registryProjet}psqlImage.yml'
       )
   }
     stage('Ansible java Image'){
           ansiblePlaybook(
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/javaImage.yml'
+          playbook: '${registryProjet}javaImage.yml'
       )
   }
     stage('Ansible docker volume'){
           ansiblePlaybook(
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createVolume.yml'
+          playbook: '${registryProjet}createVolume.yml'
       )
   }
     stage('Ansible docker network'){
           ansiblePlaybook(
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createNetwork.yml'
+          playbook: '${registryProjet}createNetwork.yml'
       )
   }
     stage('Ansible psql Container'){
           ansiblePlaybook(
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createContainer.yml'
+          playbook: '${registryProjet}createContainer.yml'
       )
   }
       stage('Ansible java Container'){
           ansiblePlaybook(
           colorized: true,
-          playbook: '/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/createJavaContainer.yml'
+          playbook: '${registryProjet}createJavaContainer.yml'
       )
   }
 }
