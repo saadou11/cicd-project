@@ -16,21 +16,21 @@ node {
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/javaImage.yml'
+          playbook: 'javaImage.yml'
       )
   }
     stage('Ansible docker volume'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/createVolume.yml'
+          playbook: 'createVolume.yml'
       )
   }
     stage('Ansible docker network'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/createNetwork.yml'
+          playbook: 'createNetwork.yml'
       )
     sh 'ansible-playbook myAnsibleRole/tasks/createNetwork.yml'
   }
@@ -38,14 +38,14 @@ node {
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/createContainer.yml'
+          playbook: 'createContainer.yml'
       )
   }
       stage('Ansible java Container'){
           ansiblePlaybook(
           colorized: true,
           become: true,
-          playbook: 'myAnsibleRole/tasks/createJavaContainer.yml'
+          playbook: 'createJavaContainer.yml'
       )
   }
 }
