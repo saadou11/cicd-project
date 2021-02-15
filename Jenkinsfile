@@ -1,5 +1,5 @@
 node {
-  def registryProjet='/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/'
+  def registryProjet="/home/saadou/ci-cd_Workspace/testPsqlDocker/tasks/"
   stage('clone project'){
     git 'https://github.com/saadou11/cicd-project'
   }
