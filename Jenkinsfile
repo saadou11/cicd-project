@@ -41,7 +41,7 @@ node {
           playbook: 'myAnsibleRole/tasks/createContainer.yml'
       )
   }
-      stage('Ansible psql Container'){
+      stage('Ansible java Container'){
           ansiblePlaybook(
           colorized: true,
           become: true,
