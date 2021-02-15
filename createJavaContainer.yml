@@ -1,0 +1,13 @@
+- name: Docker build Java container
+  hosts: localhost
+  tasks:
+   - name: createJavaContainer
+     docker_container:
+       name: java_pj
+       image: java_sad
+       state: started
+       tty: true
+       detach: true
+       networks: 
+        - name: my_network
+       

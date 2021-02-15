@@ -1,0 +1,6 @@
+- name: Docker volume create
+  hosts: localhost
+  tasks:
+   - name: create Volume
+     docker_volume:
+       name: my-psql_volume

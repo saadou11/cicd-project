@@ -1,0 +1,10 @@
+---
+# tasks file for testPsqlDocker
+- name: Docker build images
+  hosts: localhost
+  tasks:
+   - name: build image postgresql
+     docker_image:
+       path: /home/saadou/ci-cd_Workspace
+       name: psql_sad
+

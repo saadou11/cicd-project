@@ -1,0 +1,6 @@
+- name: Docker network create
+  hosts: localhost
+  tasks: 
+   - name: Create a network 
+     docker_network:
+       name: my_network

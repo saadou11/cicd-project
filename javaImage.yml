@@ -1,0 +1,7 @@
+- name: Docker build image java
+  hosts: localhost
+  tasks:
+   - name: build image java
+     docker_image:
+       path: /home/saadou/ci-cd_Workspace/dockerJava/
+       name: java_sad
